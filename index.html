@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Goal Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        form {
+            margin: 20px 0;
+        }
+        input {
+            margin: 5px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Team Goal Tracker</h1>
+    
+    <!-- Table to display scores -->
+    <table id="scoreTable">
+        <tr>
+            <th>Player Name</th>
+            <th>Goals Scored</th>
+        </tr>
+    </table>
+
+    <!-- Form to add new scores -->
+    <form id="scoreForm" onsubmit="addScore(event)">
+        <input type="text" id="playerName" placeholder="Player Name" required>
+        <input type="number" id="goals" placeholder="Goals" min="0" required>
+        <input type="submit" value="Add Score">
+    </form>
+
+    <script>
+        function addScore(event) {
+            event.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('playerName').value;
+            const goals = document.getElementById('goals').value;
+            
+            // Create new table row
+            const table = document.getElementById('scoreTable');
+            const newRow = table.insertRow();
+            const nameCell = newRow.insertCell(0);
+            const goalsCell = newRow.insertCell(1);
+            
+            // Add values to cells
+            nameCell.textContent = name;
+            goalsCell.textContent = goals;
+            
+            // Clear form
+            document.getElementById('scoreForm').reset();
+        }
+    </script>
+</body>
+</html>v
